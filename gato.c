@@ -1,5 +1,4 @@
-// Se incluyen las bibliotecas a utilizar
-
+// Se incluyen las librerias a utilizar
 #include <gtk/gtk.h>
 #include <stdio.h>
 #include <cairo.h>
