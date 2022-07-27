@@ -561,6 +561,7 @@ void on_button9_clicked(GtkButton *b){
     }      
 }
 
+
 // este boton sirve para hacer la eleccion inicial, si presiona se empieza la
 // partida con X, si no se presiona inicia con O, se ejecuta una sola vez
 // y luego se bloquea, siempre y cuando no se presione uno de los botones 1-9
