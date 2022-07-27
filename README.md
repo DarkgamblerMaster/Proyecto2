@@ -8,7 +8,6 @@
 Para la implementación del juego gato en el lenguaje de programación C se utilizaron las siguientes librerías:
 - gtk/gtk.h: conjunto de ficheros utilizados para crear las interfaces gráficas de los entornos de escritorio y de diferentes programas.
 - stdio.h: contiene las definiciones de las macros, las constantes, las declaraciones de funciones de la biblioteca estándar del lenguaje de programación C para hacer operaciones, estándar, de entrada y salida.
-- cairo.h: libreria de gráficos 2D con soporte para múltiples dispositivos de salida. 
 - math.h: está diseñado para implementar las operaciones matemáticas básicas.
 - stdbool.h: permite usar bool como un tipo de datos booleano, donde True es 1 y False corresponde a 0.
 
