@@ -219,7 +219,6 @@ int verificar_ganador5(){
     return 0;
 }
 
-
 // verifica si al presionar el boton 6 se consigue ganar
 int verificar_ganador6(){
     bool estado52 = (estados[5] == estados[2]);
@@ -233,7 +232,6 @@ int verificar_ganador6(){
     }
     return 0;
 }
-
 
 // verifica si al presionar el boton 7 se consigue ganar
 int verificar_ganador7(){
@@ -452,7 +450,19 @@ void on_button6_clicked(GtkButton *b){
         }
 
         actualizar_estados(5);
-        bloqueo_buttons_click[5] = ACTIVO;
+        
+        if(verificar_ganador6()){
+            bloquear_todo();
+            if(letra == O){
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: X");
+            }
+            else{
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: O");
+            }
+        }
+       bloqueo_buttons_click[5] = ACTIVO;
     }      
 }
 
@@ -470,10 +480,20 @@ void on_button7_clicked(GtkButton *b){
         }
 
         actualizar_estados(6);
+        if(verificar_ganador7()){
+            bloquear_todo();
+            if(letra == O){
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: X");
+            }
+            else{
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: O");
+            }
+        }
         bloqueo_buttons_click[6] = ACTIVO;
     }      
 }
-
 
 void on_button8_clicked(GtkButton *b){
     if(bloqueo_buttons_click[7] == INACTIVO ){
@@ -489,6 +509,18 @@ void on_button8_clicked(GtkButton *b){
         }
 
         actualizar_estados(7);
+        
+        if(verificar_ganador8()){
+            bloquear_todo();
+            if(letra == O){
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: X");
+            }
+            else{
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: O");
+            }
+        }
         bloqueo_buttons_click[7] = ACTIVO;
     }      
 }
@@ -507,6 +539,17 @@ void on_button9_clicked(GtkButton *b){
         }
 
         actualizar_estados(8);
+        if(verificar_ganador9()){
+            bloquear_todo();
+            if(letra == O){
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: X");
+            }
+            else{
+                gtk_label_set_text(GTK_LABEL(label_resultado)
+                                   , (const gchar*) "GANADOR: O");
+            }
+        }
         bloqueo_buttons_click[8] = ACTIVO;
     }      
 }
