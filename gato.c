@@ -1,3 +1,5 @@
+// Se incluyen las bibliotecas a utilizar
+
 #include <gtk/gtk.h>
 #include <stdio.h>
 #include <cairo.h>
@@ -7,6 +9,7 @@
 enum bloqueo_e{INACTIVO = 0, ACTIVO = 1};
 enum letra_e{X = 0, O = 1, V = 2};
 
+// Se declaran los elementos de la interfaz gráfica
 GtkWidget *window;
 GtkWidget *fixed1;
 GtkWidget *button1;
@@ -43,22 +46,27 @@ enum letra_e letra = O;
 enum letra_e estados[] = {[0 ... 8] = V};
 
 
-
 int main(int argc, char *argv[]){
-    
+    // Se inicializa gtk
     gtk_init(&argc, &argv);
-
+    
+    // Se define la interfaz gráfica del archivo
     builder = gtk_builder_new_from_file("gato.glade");
+    // Se define la ventana
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
+    
+    // Se conecta la señal de destrucción
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-
-
+    
+    // Se conectan las señales del builder
     gtk_builder_connect_signals(builder, NULL);
 
-
+    // Se define la ventana fixed1
     fixed1 = GTK_WIDGET(gtk_builder_get_object(builder, "fixed1"));
-
+    
+    
     // BUTTONS
+    // Se definen los botones con sus ID
     button1 = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
     button2 = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));    
     button3 = GTK_WIDGET(gtk_builder_get_object(builder, "button3")); 
@@ -71,6 +79,7 @@ int main(int argc, char *argv[]){
     button_eleccion = GTK_WIDGET(gtk_builder_get_object(builder, "button_eleccion"));
 
     // LABELS
+    // Se definen las etiquetas con sus ID
     label1 = GTK_WIDGET(gtk_builder_get_object(builder, "label1"));
     label2 = GTK_WIDGET(gtk_builder_get_object(builder, "label2"));
     label3 = GTK_WIDGET(gtk_builder_get_object(builder, "label3"));
@@ -83,10 +92,11 @@ int main(int argc, char *argv[]){
     label_eleccion = GTK_WIDGET(gtk_builder_get_object(builder, "label_eleccion"));
     label_resultado = GTK_WIDGET(gtk_builder_get_object(builder, "label_resultado"));
 
-    
+    // Se define el reset con su ID
     //draw = GTK_WIDGET(gtk_builder_get_object(builder, "draw"));
     reset = GTK_WIDGET(gtk_builder_get_object(builder, "reset"));
-
+    
+    // Se muestra la ventana 
     gtk_widget_show(window);
     gtk_main();
 
@@ -94,14 +104,14 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-// bloquea todas las entradas del gato
+// Bloquea todas las entradas del gato
 void bloquear_todo(){
     for(int k = 0; k < 9; k++){
         bloqueo_buttons_click[k] = ACTIVO;
     }
 }
 
-// es el handler del boton reset
+// Es el handler del boton reset
 void on_reset_clicked(GtkButton *b){
     for(int k = 0; k < 9; k++){
         bloqueo_buttons_click[k] = INACTIVO;
@@ -123,7 +133,7 @@ void on_reset_clicked(GtkButton *b){
     letra = O;
 }
 
-// funcion para actualizar los estados del juego
+// Funcion para actualizar los estados del juego
 void actualizar_estados(int index){
     if(letra == X){
         estados[index] = O;
@@ -164,7 +174,6 @@ int verificar_ganador2(){
     return 0;
 }
 
-
 // verifica si al presionar el boton 3 se consigue ganar
 int verificar_ganador3(){
     bool estado01 = (estados[0] == estados[1]);
@@ -182,7 +191,6 @@ int verificar_ganador3(){
     return 0;
 }
 
-
 // verifica si al presionar el boton 4 se consigue ganar
 int verificar_ganador4(){
     bool estado03 = (estados[0] == estados[3]);
@@ -196,7 +204,6 @@ int verificar_ganador4(){
     }
     return 0;
 }
-
 
 // verifica si al presionar el boton 5 se consigue ganar
 int verificar_ganador5(){
