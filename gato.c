@@ -220,7 +220,68 @@ int verificar_ganador5(){
 }
 
 
+// verifica si al presionar el boton 6 se consigue ganar
+int verificar_ganador6(){
+    bool estado52 = (estados[5] == estados[2]);
+    bool estado58 = (estados[5] == estados[8]);
+    bool ver_der = (estado52 && estado58);
+    bool estado54 = (estados[5] == estados[4]);
+    bool estado53 = (estados[3] == estados[5]);
+    bool hor_med = (estado54 && estado53);
+    if(hor_med || ver_der){
+        return 1;
+    }
+    return 0;
+}
 
+
+// verifica si al presionar el boton 7 se consigue ganar
+int verificar_ganador7(){
+    bool estado60 = (estados[6] == estados[0]);
+    bool estado63 = (estados[6] == estados[3]);
+    bool ver_izq = (estado60 && estado63);
+    bool estado67 = (estados[6] == estados[7]);
+    bool estado68 = (estados[6] == estados[8]);
+    bool hor_inf = (estado67 && estado68);
+    bool estado64 = (estados[6] == estados[4]);
+    bool estado62 = (estados[6] == estados[2]);
+    bool diag2 = (estado64 && estado62);
+    if(ver_izq || hor_inf || diag2){
+        return 1;
+    }
+    return 0;
+}
+
+// verifica si al presionar el boton 8 se consigue ganar
+int verificar_ganador8(){
+    bool estado71 = (estados[7] == estados[1]);
+    bool estado74 = (estados[7] == estados[4]);
+    bool ver_med = (estado71 && estado74);
+    bool estado76 = (estados[7] == estados[6]);
+    bool estado78 = (estados[7] == estados[8]);
+    bool hor_inf = (estado76 && estado78);
+    if(hor_inf || ver_med){
+        return 1;
+    }
+    return 0;
+}
+
+// verifica si al presionar el boton 9 se consigue ganar
+int verificar_ganador9(){
+    bool estado82 = (estados[8] == estados[2]);
+    bool estado85 = (estados[8] == estados[5]);
+    bool ver_der = (estado82 && estado85);
+    bool estado86 = (estados[8] == estados[6]);
+    bool estado87 = (estados[8] == estados[7]);
+    bool hor_inf = (estado86 && estado87);
+    bool estado80 = (estados[8] == estados[0]);
+    bool estado84 = (estados[8] == estados[4]);
+    bool diag1 = (estado80 && estado84);
+    if(ver_der || hor_inf || diag1){
+        return 1;
+    }
+    return 0;
+}
 
 // handler del boton1, al presionarse realiza todas estas acciones
 // los otros handlers similares hacen lo mismo para sus respectivos
